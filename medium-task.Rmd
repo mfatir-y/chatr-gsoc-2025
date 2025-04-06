@@ -1,0 +1,17 @@
+---
+title: "medium-task"
+output: html_document
+---
+
+Used the documentation on using ollama with ellmer from https://ellmer.tidyverse.org/reference/chat_ollama.html and created a function that chats with Q4_K_M quantization of llama3.2:3b-instruct.
+
+```{r}
+install.packages("ellmer")
+library("ellmer")
+
+chat_with_llama <- chat_ollama(
+  system_prompt = "Use https://cran.r-project.org/doc/manuals/r-devel/R-exts.html for any references to R code in your response.",
+  model = "llama3.2:3b-instruct-q4_K_M",
+)
+chat_with_llama$chat("How do I make a linear regression plot?")
+```
