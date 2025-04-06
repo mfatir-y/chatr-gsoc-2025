@@ -1,0 +1,69 @@
+C:\Users\ffati>ollama pull llama3.2:3b-instruct-q4_K_M
+pulling manifest
+pulling dde5aa3fc5ff... 100% ▕████████████████████████████████████████████████████████▏ 2.0 GB
+pulling 966de95ca8a6... 100% ▕████████████████████████████████████████████████████████▏ 1.4 KB
+pulling fcc5a6bec9da... 100% ▕████████████████████████████████████████████████████████▏ 7.7 KB
+pulling a70ff7e570d9... 100% ▕████████████████████████████████████████████████████████▏ 6.0 KB
+pulling 56bb8bd477a5... 100% ▕████████████████████████████████████████████████████████▏   96 B
+pulling 34bb5ab01051... 100% ▕████████████████████████████████████████████████████████▏  561 B
+verifying sha256 digest
+writing manifest
+success
+
+C:\Users\ffati>ollama run llama3.2:3b-instruct-q4_K_M "From https://cran.r-project.org/doc/manuals/r-devel/R-exts.html, How do I register symbols?"
+To register symbols in R using the R C API, you can use the `R_registerGeneric` and `R_registerMethods` functions.
+
+Here is an example of how to register a generic symbol:
+```c
+#include <R.h>
+
+SEXP R_registerGeneric(const char *genId) {
+    SEXP gen;
+    PROTECT(gen = R_defineGeneric(genId));
+    return gen;
+}
+```
+This function defines a new generic symbol with the given ID and returns it.
+
+To register methods for a generic symbol, you can use `R_registerMethod`:
+```c
+SEXP R_registerMethod(const char *genId, const char *methodId) {
+    SEXP method;
+    PROTECT(method = R_defineMethod(genId, methodId));
+    return method;
+}
+```
+This function defines a new method for the given generic symbol with the given ID and returns it.
+
+Here is an example of how to register a complete symbol that includes both the generic and method definitions:
+```c
+SEXP R_registerSymbol(const char *symbolName) {
+    SEXP sym;
+    PROTECT(sym = R_defCharVector(1));
+    strcpy(R character(sym, 0), symbolName);
+    R_registerGeneric(symbolName);
+    R_registerMethod(symbolName, "method_name", method definition);
+    UNPROTECT(1);
+    return sym;
+}
+```
+Note that you need to define the `R_defineGeneric` and `R_defineMethod` functions yourself. These functions are
+not part of the standard C API.
+
+Alternatively, you can use the `R_registerSymbolDef` function to register a symbol definition:
+```c
+SEXP R_registerSymbolDef(const char *symbolName) {
+    SEXP sym;
+    PROTECT(sym = R_defCharVector(1));
+    strcpy(R character(sym, 0), symbolName);
+    R_registerGeneric(symbolName);
+    R_registerMethod(symbolName, "method_name", method definition);
+    UNPROTECT(1);
+    return sym;
+}
+```
+This function registers a new generic symbol with the given ID and method definitions.
+
+In general, registering symbols in R is typically done using the `R_registerGeneric` and `R_registerMethods`
+functions, which are part of the standard C API. However, the `R_registerSymbolDef` function can be used to
+register a complete symbol definition at once.
