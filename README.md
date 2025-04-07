@@ -1,4 +1,4 @@
-# ChatR-Gsoc-2025
+# ChatR-GSoC-2025
 
 This repository contains tasks and solutions related to the Google Summer of Code 2025 project.
 
