@@ -1,6 +1,5 @@
 #' @param package_name Character. The name of the R package to query.
 #' @param model Character. The name of the Ollama model to use. Default is "llama3.2:3b".
-#' @param temperature Numeric. Temperature setting for the model. Default is 0.2.
 #'
 #' @return Character vector of function names supposedly exported by the package.
 #' @export
