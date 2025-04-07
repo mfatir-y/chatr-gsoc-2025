@@ -8,7 +8,7 @@
 #' @examples
 #' \dontrun{
 #' }
-get_package_functions <- function(package_name, model = "llama3.2:3b-instruct-q4_K_M", temperature = 0.2) {
+get_package_functions <- function(package_name, model = "llama3.2:3b", temperature = 0.2) {
   if(missing(package_name) || !is.character(package_name) || length(package_name) != 1) {
     stop("Invalid package name")
   }
