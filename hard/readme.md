@@ -4,7 +4,7 @@ An R package that uses the `ellmer` package to query Ollama's llama3.2 language 
 
 ## Installation
 
-You'll need to have Ollama installed and the llama3.2:3b-instruct model available.
+You'll need to have Ollama installed and the llama3.2:3b model available.
 
 ```r
 # Install the development version from GitHub
