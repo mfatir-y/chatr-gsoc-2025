@@ -15,9 +15,9 @@ devtools::install_github("yourusername/pkgfunfinder")
 ## Prerequisites
 
 1. Install Ollama from [https://ollama.ai/](https://ollama.ai/)
-2. Pull the llama3.2:3b-instruct model:
+2. Pull the llama3.2:3b model:
    ```bash
-   ollama pull llama3.2:3b-instruct
+   ollama pull llama3.2:3b
    ```
 
 ## Usage
